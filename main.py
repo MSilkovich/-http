@@ -31,14 +31,13 @@ up = toponym['boundedBy']['Envelope']['lowerCorner'].split()
 down = toponym['boundedBy']['Envelope']['upperCorner'].split()
 delta1 = str(float(down[0]) - float(up[0]))
 delta2 = str(float(down[1]) - float(up[1]))
-delta = "0.005"
 map_params = {
     "ll": ",".join([toponym_longitude, toponym_lattitude]),
     "spn": ",".join([delta1, delta2]),
     "l": "map",
     "pt": ",".join([toponym_longitude, toponym_lattitude]),
 }
-
+intofile(map_params)
 map_api_server = "http://static-maps.yandex.ru/1.x/"
 response = requests.get(map_api_server, params=map_params)
 
